@@ -37,8 +37,8 @@
             this.panelAlloc = new System.Windows.Forms.Panel();
             this.btnDealloc = new System.Windows.Forms.Button();
             this.btnAlloc = new System.Windows.Forms.Button();
-            this.textBoxSizekb = new System.Windows.Forms.TextBox();
-            this.textBoxProcessName = new System.Windows.Forms.TextBox();
+            this.tboxSize = new System.Windows.Forms.TextBox();
+            this.tboxProcessName = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -145,8 +145,8 @@
             this.panelAlloc.BackColor = System.Drawing.SystemColors.Info;
             this.panelAlloc.Controls.Add(this.btnDealloc);
             this.panelAlloc.Controls.Add(this.btnAlloc);
-            this.panelAlloc.Controls.Add(this.textBoxSizekb);
-            this.panelAlloc.Controls.Add(this.textBoxProcessName);
+            this.panelAlloc.Controls.Add(this.tboxSize);
+            this.panelAlloc.Controls.Add(this.tboxProcessName);
             this.panelAlloc.Controls.Add(this.textBox4);
             this.panelAlloc.Controls.Add(this.textBox3);
             this.panelAlloc.Controls.Add(this.textBox2);
@@ -166,7 +166,7 @@
             this.btnDealloc.TabIndex = 7;
             this.btnDealloc.Text = "Deallocate";
             this.btnDealloc.UseVisualStyleBackColor = false;
-            this.btnDealloc.Click += new System.EventHandler(this.buttonDeallocate_Click);
+            this.btnDealloc.Click += new System.EventHandler(this.deallocJob);
             // 
             // btnAlloc
             // 
@@ -179,27 +179,27 @@
             this.btnAlloc.TabIndex = 6;
             this.btnAlloc.Text = "Allocate";
             this.btnAlloc.UseVisualStyleBackColor = false;
-            this.btnAlloc.Click += new System.EventHandler(this.buttonAllocate_Click);
+            this.btnAlloc.Click += new System.EventHandler(this.allocJob);
             // 
-            // textBoxSizekb
+            // tboxSize
             // 
-            this.textBoxSizekb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.textBoxSizekb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSizekb.Location = new System.Drawing.Point(15, 132);
-            this.textBoxSizekb.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxSizekb.Name = "textBoxSizekb";
-            this.textBoxSizekb.Size = new System.Drawing.Size(217, 23);
-            this.textBoxSizekb.TabIndex = 5;
+            this.tboxSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tboxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxSize.Location = new System.Drawing.Point(15, 132);
+            this.tboxSize.Margin = new System.Windows.Forms.Padding(2);
+            this.tboxSize.Name = "tboxSize";
+            this.tboxSize.Size = new System.Drawing.Size(217, 23);
+            this.tboxSize.TabIndex = 5;
             // 
-            // textBoxProcessName
+            // tboxProcessName
             // 
-            this.textBoxProcessName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.textBoxProcessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxProcessName.Location = new System.Drawing.Point(15, 67);
-            this.textBoxProcessName.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxProcessName.Name = "textBoxProcessName";
-            this.textBoxProcessName.Size = new System.Drawing.Size(217, 23);
-            this.textBoxProcessName.TabIndex = 4;
+            this.tboxProcessName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tboxProcessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxProcessName.Location = new System.Drawing.Point(15, 67);
+            this.tboxProcessName.Margin = new System.Windows.Forms.Padding(2);
+            this.tboxProcessName.Name = "tboxProcessName";
+            this.tboxProcessName.Size = new System.Drawing.Size(217, 23);
+            this.tboxProcessName.TabIndex = 4;
             // 
             // textBox4
             // 
@@ -417,7 +417,7 @@
             this.textBox11.TabIndex = 10;
             this.textBox11.Text = "Simulation";
             // 
-            // Form2
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -435,7 +435,7 @@
             this.Controls.Add(this.panelAlloc);
             this.Controls.Add(this.panelDefMemory);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form2";
+            this.Name = "mainForm";
             this.Text = "Memory Management";
             this.panelDefMemory.ResumeLayout(false);
             this.panelDefMemory.PerformLayout();
@@ -459,8 +459,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBoxSizekb;
-        private System.Windows.Forms.TextBox textBoxProcessName;
+        private System.Windows.Forms.TextBox tboxSize;
+        private System.Windows.Forms.TextBox tboxProcessName;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBoxTotalMemory;

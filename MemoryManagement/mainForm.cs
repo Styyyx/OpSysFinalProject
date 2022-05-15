@@ -22,47 +22,35 @@ namespace MemoryManagement
 
         //-------------------------------------------------------------
 
-        int top = 150;
-        int left = 550;
-        private void buttonAllocate_Click(object sender, EventArgs e)
+        private void allocJob(object sender, EventArgs e)
         {
-            addNewLabelallocation();
-        }
-        public System.Windows.Forms.Label addNewLabelallocation()
-        {
+            if (tboxProcessName.Text == "" || tboxSize.Text == "")
+            {
+                MessageBox.Show("Invalid");
+                return;
+            }
+
+            // validation: check for existing job
+
             System.Windows.Forms.Label lblAlloc = new System.Windows.Forms.Label();
-            this.Controls.Add(lblAlloc);
 
-
-
+            int left = 0, top = 0;
             lblAlloc.BackColor = System.Drawing.Color.GreenYellow;
             lblAlloc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             lblAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lblAlloc.Name = "labelDynamic";
-            lblAlloc.Size = new System.Drawing.Size(250,27);
+            lblAlloc.Size = new System.Drawing.Size(panelQueue.Width,25);
             lblAlloc.TabIndex = 0;
             lblAlloc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
             lblAlloc.Location = new System.Drawing.Point(left, top);
-            top += 35;
-  
-            lblAlloc.Text = "Allocate:" + textBoxProcessName.Text + " (" + textBoxSizekb.Text + "KB )";
-            return lblAlloc;
+            lblAlloc.Text = $"Allocate: {tboxProcessName.Text} {tboxSize.Text} KB ";
+
+            this.panelQueue.Controls.Add(lblAlloc);
         }
 
-        private void labelDynamic_Click(object sender, EventArgs e)
+        public void deallocJob(object sender, EventArgs e)
         {
-
-        }
-
-     
-
-        private void buttonDeallocate_Click(object sender, EventArgs e)
-        {
-            addNewLabeldeallocation();
-        }
-        public System.Windows.Forms.Label addNewLabeldeallocation()
-        {
+            
             System.Windows.Forms.Label lblDeAlloc = new System.Windows.Forms.Label();
             this.Controls.Add(lblDeAlloc);
 
@@ -75,11 +63,10 @@ namespace MemoryManagement
             lblDeAlloc.TabIndex = 0;
             lblDeAlloc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
-            lblDeAlloc.Location = new System.Drawing.Point(left, top);
-            top += 35;
+            // lblDeAlloc.Location = new System.Drawing.Point(left, top);
+            // top += 35;
 
-            lblDeAlloc.Text = "Deallocate:"+textBoxProcessName.Text + " (" + textBoxSizekb.Text + "KB )";
-            return lblDeAlloc;
+            lblDeAlloc.Text = "Deallocate:"+tboxProcessName.Text + " (" + tboxSize.Text + "KB )";
         }
 
         private void buttonCompact_Click(object sender, EventArgs e)
@@ -101,8 +88,8 @@ namespace MemoryManagement
             lblCompact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
 
-            lblCompact.Location = new System.Drawing.Point(left, top);
-            top += 35;
+            // lblCompact.Location = new System.Drawing.Point(left, top);
+            // top += 35;
             lblCompact.Text = "Compact";
 
             return lblCompact;
