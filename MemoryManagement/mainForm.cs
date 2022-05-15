@@ -25,7 +25,6 @@ namespace MemoryManagement
         //-------------------------------------------------------------
         private void addQueueItem(string task)
         {
-            
             Label queueItem = new System.Windows.Forms.Label();
             string jobName = tboxProcessName.Text, jobSize="";
             if (task == "dealloc")
@@ -53,6 +52,35 @@ namespace MemoryManagement
             top += 25;
 
             panelQueue.Controls.Add(queueItem);
+
+            Button btnRmvQueItem = new Button();
+            btnRmvQueItem.BackColor = System.Drawing.Color.Red;
+            btnRmvQueItem.ForeColor = System.Drawing.Color.Black;
+            btnRmvQueItem.Location = new System.Drawing.Point(0, 0);
+            btnRmvQueItem.Margin = new System.Windows.Forms.Padding(2);
+            btnRmvQueItem.Name = "X";
+            btnRmvQueItem.Size = new System.Drawing.Size(25, 25);
+            btnRmvQueItem.TabIndex = 0;
+            btnRmvQueItem.Text = "Allocate";
+            //btnRmvQueItem.Font.Size = 14.8F;
+            btnRmvQueItem.UseVisualStyleBackColor = false;
+            btnRmvQueItem.Click += new System.EventHandler(removeTask);
+
+            queueItem.Controls.Add(btnRmvQueItem);
+        }
+
+        private void removeTask(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            panelQueue.Controls.Remove(btn.Parent);
+            top -= 25;
+            int newTop = 0;
+            foreach (Control ctrl in panelQueue.Controls)
+            {
+                Label lbl = ctrl as Label;
+                lbl.Top = newTop;
+                newTop += 25;
+            }
         }
 
         private void addAllocJob(object sender, EventArgs e)
