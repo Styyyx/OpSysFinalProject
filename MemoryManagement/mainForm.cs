@@ -14,15 +14,48 @@ namespace MemoryManagement
 {
     public partial class mainForm : Form
     {
+        int top = 0, left = 0;
+        List<Process> processList = new List<Process>();
+
         public mainForm()
         {
             InitializeComponent();
         }
 
-
         //-------------------------------------------------------------
+        private void addQueueItem(string task)
+        {
+            
+            Label queueItem = new System.Windows.Forms.Label();
+            string jobName = tboxProcessName.Text, jobSize="";
+            if (task == "dealloc")
+            {
+                jobSize = "0";
+                queueItem.BackColor = System.Drawing.Color.OrangeRed;
+                queueItem.Text = $"Deallocate: {jobName} KB ";
+            } 
+            else
+            {
+                jobSize = tboxSize.Text;
+                queueItem.BackColor = System.Drawing.Color.GreenYellow;
+                queueItem.Text = $"Allocate: {jobName} {jobSize} KB ";
+            }
+            processList.Add(new Process(task, jobName, Convert.ToInt32(jobSize)));
 
-        private void allocJob(object sender, EventArgs e)
+            
+            queueItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            queueItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            queueItem.Name = $"[{task}][{jobName}][{jobSize}]";
+            queueItem.Size = new System.Drawing.Size(panelQueue.Width, 25);
+            queueItem.TabIndex = 0;
+            queueItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            queueItem.Location = new System.Drawing.Point(left, top);
+            top += 25;
+
+            panelQueue.Controls.Add(queueItem);
+        }
+
+        private void addAllocJob(object sender, EventArgs e)
         {
             if (tboxProcessName.Text == "" || tboxSize.Text == "")
             {
@@ -30,49 +63,15 @@ namespace MemoryManagement
                 return;
             }
 
+            addQueueItem("alloc");
             // validation: check for existing job
-
-            System.Windows.Forms.Label lblAlloc = new System.Windows.Forms.Label();
-
-            int left = 0, top = 0;
-            lblAlloc.BackColor = System.Drawing.Color.GreenYellow;
-            lblAlloc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lblAlloc.Name = "labelDynamic";
-            lblAlloc.Size = new System.Drawing.Size(panelQueue.Width,25);
-            lblAlloc.TabIndex = 0;
-            lblAlloc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            lblAlloc.Location = new System.Drawing.Point(left, top);
-            lblAlloc.Text = $"Allocate: {tboxProcessName.Text} {tboxSize.Text} KB ";
-
-            this.panelQueue.Controls.Add(lblAlloc);
         }
 
-        public void deallocJob(object sender, EventArgs e)
+        public void addDeallocJob(object sender, EventArgs e)
         {
-            
-            System.Windows.Forms.Label lblDeAlloc = new System.Windows.Forms.Label();
-            this.Controls.Add(lblDeAlloc);
-
-
-            lblDeAlloc.BackColor = System.Drawing.Color.OrangeRed;
-            lblDeAlloc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblDeAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lblDeAlloc.Name = "labelDynamic";
-            lblDeAlloc.Size = new System.Drawing.Size(250, 27);
-            lblDeAlloc.TabIndex = 0;
-            lblDeAlloc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
-            // lblDeAlloc.Location = new System.Drawing.Point(left, top);
-            // top += 35;
-
-            lblDeAlloc.Text = "Deallocate:"+tboxProcessName.Text + " (" + tboxSize.Text + "KB )";
+            addQueueItem("dealloc");
         }
 
-        private void buttonCompact_Click(object sender, EventArgs e)
-        {
-            addNewLabelcompact();
-        }
         public System.Windows.Forms.Label addNewLabelcompact()
         {
             System.Windows.Forms.Label lblCompact = new System.Windows.Forms.Label();
@@ -86,10 +85,6 @@ namespace MemoryManagement
             lblCompact.Size = new System.Drawing.Size(250, 27);
             lblCompact.TabIndex = 0;
             lblCompact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
-
-            // lblCompact.Location = new System.Drawing.Point(left, top);
-            // top += 35;
             lblCompact.Text = "Compact";
 
             return lblCompact;

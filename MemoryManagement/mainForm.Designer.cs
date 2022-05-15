@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panelDefMemory = new System.Windows.Forms.Panel();
-            this.textBoxTotalMemory = new System.Windows.Forms.TextBox();
-            this.textBoxOskb = new System.Windows.Forms.TextBox();
+            this.tboxTotalMemory = new System.Windows.Forms.TextBox();
+            this.tboxOSMemory = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -48,7 +48,6 @@
             this.radioButtonBestFit = new System.Windows.Forms.RadioButton();
             this.btnSimulate = new System.Windows.Forms.Button();
             this.btnCompact = new System.Windows.Forms.Button();
-            this.panelSimulation = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelCompaction = new System.Windows.Forms.Panel();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -56,6 +55,8 @@
             this.panelQueue = new System.Windows.Forms.Panel();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
+            this.panelSimulation = new System.Windows.Forms.Panel();
+            this.btnSetMemory = new System.Windows.Forms.Button();
             this.panelDefMemory.SuspendLayout();
             this.panelAlloc.SuspendLayout();
             this.panelFitAlgo.SuspendLayout();
@@ -65,36 +66,37 @@
             // panelDefMemory
             // 
             this.panelDefMemory.BackColor = System.Drawing.SystemColors.Info;
-            this.panelDefMemory.Controls.Add(this.textBoxTotalMemory);
-            this.panelDefMemory.Controls.Add(this.textBoxOskb);
+            this.panelDefMemory.Controls.Add(this.btnSetMemory);
+            this.panelDefMemory.Controls.Add(this.tboxTotalMemory);
+            this.panelDefMemory.Controls.Add(this.tboxOSMemory);
             this.panelDefMemory.Controls.Add(this.textBox7);
             this.panelDefMemory.Controls.Add(this.textBox6);
             this.panelDefMemory.Controls.Add(this.textBox5);
             this.panelDefMemory.Location = new System.Drawing.Point(288, 87);
             this.panelDefMemory.Margin = new System.Windows.Forms.Padding(2);
             this.panelDefMemory.Name = "panelDefMemory";
-            this.panelDefMemory.Size = new System.Drawing.Size(252, 145);
+            this.panelDefMemory.Size = new System.Drawing.Size(252, 175);
             this.panelDefMemory.TabIndex = 0;
             // 
-            // textBoxTotalMemory
+            // tboxTotalMemory
             // 
-            this.textBoxTotalMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.textBoxTotalMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalMemory.Location = new System.Drawing.Point(15, 105);
-            this.textBoxTotalMemory.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxTotalMemory.Name = "textBoxTotalMemory";
-            this.textBoxTotalMemory.Size = new System.Drawing.Size(217, 23);
-            this.textBoxTotalMemory.TabIndex = 6;
+            this.tboxTotalMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tboxTotalMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxTotalMemory.Location = new System.Drawing.Point(15, 105);
+            this.tboxTotalMemory.Margin = new System.Windows.Forms.Padding(2);
+            this.tboxTotalMemory.Name = "tboxTotalMemory";
+            this.tboxTotalMemory.Size = new System.Drawing.Size(217, 23);
+            this.tboxTotalMemory.TabIndex = 6;
             // 
-            // textBoxOskb
+            // tboxOSMemory
             // 
-            this.textBoxOskb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.textBoxOskb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOskb.Location = new System.Drawing.Point(15, 62);
-            this.textBoxOskb.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxOskb.Name = "textBoxOskb";
-            this.textBoxOskb.Size = new System.Drawing.Size(217, 23);
-            this.textBoxOskb.TabIndex = 5;
+            this.tboxOSMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tboxOSMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxOSMemory.Location = new System.Drawing.Point(15, 62);
+            this.tboxOSMemory.Margin = new System.Windows.Forms.Padding(2);
+            this.tboxOSMemory.Name = "tboxOSMemory";
+            this.tboxOSMemory.Size = new System.Drawing.Size(217, 23);
+            this.tboxOSMemory.TabIndex = 5;
             // 
             // textBox7
             // 
@@ -109,7 +111,7 @@
             this.textBox7.ShortcutsEnabled = false;
             this.textBox7.Size = new System.Drawing.Size(187, 16);
             this.textBox7.TabIndex = 4;
-            this.textBox7.Text = "Totat Memory (KB)";
+            this.textBox7.Text = "Total Memory (KB)";
             // 
             // textBox6
             // 
@@ -150,42 +152,42 @@
             this.panelAlloc.Controls.Add(this.textBox4);
             this.panelAlloc.Controls.Add(this.textBox3);
             this.panelAlloc.Controls.Add(this.textBox2);
-            this.panelAlloc.Location = new System.Drawing.Point(288, 236);
+            this.panelAlloc.Location = new System.Drawing.Point(288, 266);
             this.panelAlloc.Margin = new System.Windows.Forms.Padding(2);
             this.panelAlloc.Name = "panelAlloc";
-            this.panelAlloc.Size = new System.Drawing.Size(252, 236);
+            this.panelAlloc.Size = new System.Drawing.Size(252, 208);
             this.panelAlloc.TabIndex = 1;
             // 
             // btnDealloc
             // 
             this.btnDealloc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnDealloc.Location = new System.Drawing.Point(80, 196);
+            this.btnDealloc.Location = new System.Drawing.Point(80, 167);
             this.btnDealloc.Margin = new System.Windows.Forms.Padding(2);
             this.btnDealloc.Name = "btnDealloc";
             this.btnDealloc.Size = new System.Drawing.Size(84, 32);
             this.btnDealloc.TabIndex = 7;
             this.btnDealloc.Text = "Deallocate";
             this.btnDealloc.UseVisualStyleBackColor = false;
-            this.btnDealloc.Click += new System.EventHandler(this.deallocJob);
+            this.btnDealloc.Click += new System.EventHandler(this.addDeallocJob);
             // 
             // btnAlloc
             // 
             this.btnAlloc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnAlloc.ForeColor = System.Drawing.Color.Black;
-            this.btnAlloc.Location = new System.Drawing.Point(80, 158);
+            this.btnAlloc.Location = new System.Drawing.Point(80, 129);
             this.btnAlloc.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlloc.Name = "btnAlloc";
             this.btnAlloc.Size = new System.Drawing.Size(84, 32);
             this.btnAlloc.TabIndex = 6;
             this.btnAlloc.Text = "Allocate";
             this.btnAlloc.UseVisualStyleBackColor = false;
-            this.btnAlloc.Click += new System.EventHandler(this.allocJob);
+            this.btnAlloc.Click += new System.EventHandler(this.addAllocJob);
             // 
             // tboxSize
             // 
             this.tboxSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.tboxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxSize.Location = new System.Drawing.Point(15, 132);
+            this.tboxSize.Location = new System.Drawing.Point(15, 102);
             this.tboxSize.Margin = new System.Windows.Forms.Padding(2);
             this.tboxSize.Name = "tboxSize";
             this.tboxSize.Size = new System.Drawing.Size(217, 23);
@@ -195,7 +197,7 @@
             // 
             this.tboxProcessName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.tboxProcessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxProcessName.Location = new System.Drawing.Point(15, 67);
+            this.tboxProcessName.Location = new System.Drawing.Point(15, 53);
             this.tboxProcessName.Margin = new System.Windows.Forms.Padding(2);
             this.tboxProcessName.Name = "tboxProcessName";
             this.tboxProcessName.Size = new System.Drawing.Size(217, 23);
@@ -207,7 +209,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.textBox4.Location = new System.Drawing.Point(15, 110);
+            this.textBox4.Location = new System.Drawing.Point(15, 80);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ShortcutsEnabled = false;
@@ -221,7 +223,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.Color.Black;
-            this.textBox3.Location = new System.Drawing.Point(15, 48);
+            this.textBox3.Location = new System.Drawing.Point(15, 34);
             this.textBox3.Margin = new System.Windows.Forms.Padding(0);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -232,17 +234,18 @@
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox2.BackColor = System.Drawing.SystemColors.Info;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(15, 15);
+            this.textBox2.Location = new System.Drawing.Point(15, 11);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.ShortcutsEnabled = false;
             this.textBox2.Size = new System.Drawing.Size(187, 21);
             this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Create Allocate Here";
+            this.textBox2.Text = "Create Job Here";
             // 
             // panelFitAlgo
             // 
@@ -318,16 +321,6 @@
             this.btnCompact.TabIndex = 1;
             this.btnCompact.Text = "Compact";
             this.btnCompact.UseVisualStyleBackColor = false;
-            this.btnCompact.Click += new System.EventHandler(this.buttonCompact_Click);
-            // 
-            // panelSimulation
-            // 
-            this.panelSimulation.BackColor = System.Drawing.SystemColors.Info;
-            this.panelSimulation.Location = new System.Drawing.Point(9, 87);
-            this.panelSimulation.Margin = new System.Windows.Forms.Padding(2);
-            this.panelSimulation.Name = "panelSimulation";
-            this.panelSimulation.Size = new System.Drawing.Size(267, 551);
-            this.panelSimulation.TabIndex = 6;
             // 
             // textBox1
             // 
@@ -382,6 +375,7 @@
             // 
             // panelQueue
             // 
+            this.panelQueue.AutoScroll = true;
             this.panelQueue.BackColor = System.Drawing.SystemColors.Info;
             this.panelQueue.Location = new System.Drawing.Point(554, 87);
             this.panelQueue.Margin = new System.Windows.Forms.Padding(2);
@@ -417,6 +411,27 @@
             this.textBox11.TabIndex = 10;
             this.textBox11.Text = "Simulation";
             // 
+            // panelSimulation
+            // 
+            this.panelSimulation.BackColor = System.Drawing.SystemColors.Info;
+            this.panelSimulation.Location = new System.Drawing.Point(9, 87);
+            this.panelSimulation.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSimulation.Name = "panelSimulation";
+            this.panelSimulation.Size = new System.Drawing.Size(267, 551);
+            this.panelSimulation.TabIndex = 6;
+            // 
+            // btnSetMemory
+            // 
+            this.btnSetMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnSetMemory.ForeColor = System.Drawing.Color.Black;
+            this.btnSetMemory.Location = new System.Drawing.Point(79, 132);
+            this.btnSetMemory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetMemory.Name = "btnSetMemory";
+            this.btnSetMemory.Size = new System.Drawing.Size(84, 32);
+            this.btnSetMemory.TabIndex = 8;
+            this.btnSetMemory.Text = "Set Memory";
+            this.btnSetMemory.UseVisualStyleBackColor = false;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +451,7 @@
             this.Controls.Add(this.panelDefMemory);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "mainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Memory Management";
             this.panelDefMemory.ResumeLayout(false);
             this.panelDefMemory.PerformLayout();
@@ -463,8 +479,8 @@
         private System.Windows.Forms.TextBox tboxProcessName;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBoxTotalMemory;
-        private System.Windows.Forms.TextBox textBoxOskb;
+        private System.Windows.Forms.TextBox tboxTotalMemory;
+        private System.Windows.Forms.TextBox tboxOSMemory;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button btnAlloc;
         private System.Windows.Forms.RadioButton radioButtonFirstFit;
@@ -472,7 +488,6 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button btnDealloc;
         private System.Windows.Forms.Button btnCompact;
-        private System.Windows.Forms.Panel panelSimulation;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panelCompaction;
         private System.Windows.Forms.TextBox textBox9;
@@ -480,5 +495,7 @@
         private System.Windows.Forms.Panel panelQueue;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Panel panelSimulation;
+        private System.Windows.Forms.Button btnSetMemory;
     }
 }
