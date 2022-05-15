@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelDefMemory = new System.Windows.Forms.Panel();
+            this.btnSetMemory = new System.Windows.Forms.Button();
             this.tboxTotalMemory = new System.Windows.Forms.TextBox();
             this.tboxOSMemory = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.panelSimulation = new System.Windows.Forms.Panel();
-            this.btnSetMemory = new System.Windows.Forms.Button();
             this.panelDefMemory.SuspendLayout();
             this.panelAlloc.SuspendLayout();
             this.panelFitAlgo.SuspendLayout();
@@ -77,6 +77,18 @@
             this.panelDefMemory.Name = "panelDefMemory";
             this.panelDefMemory.Size = new System.Drawing.Size(252, 175);
             this.panelDefMemory.TabIndex = 0;
+            // 
+            // btnSetMemory
+            // 
+            this.btnSetMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnSetMemory.ForeColor = System.Drawing.Color.Black;
+            this.btnSetMemory.Location = new System.Drawing.Point(79, 132);
+            this.btnSetMemory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetMemory.Name = "btnSetMemory";
+            this.btnSetMemory.Size = new System.Drawing.Size(84, 32);
+            this.btnSetMemory.TabIndex = 8;
+            this.btnSetMemory.Text = "Set Memory";
+            this.btnSetMemory.UseVisualStyleBackColor = false;
             // 
             // tboxTotalMemory
             // 
@@ -137,6 +149,7 @@
             this.textBox5.Location = new System.Drawing.Point(15, 8);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.ShortcutsEnabled = false;
             this.textBox5.Size = new System.Drawing.Size(208, 21);
             this.textBox5.TabIndex = 2;
@@ -212,6 +225,7 @@
             this.textBox4.Location = new System.Drawing.Point(15, 80);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.ShortcutsEnabled = false;
             this.textBox4.Size = new System.Drawing.Size(187, 16);
             this.textBox4.TabIndex = 3;
@@ -242,6 +256,7 @@
             this.textBox2.Location = new System.Drawing.Point(15, 11);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.ShortcutsEnabled = false;
             this.textBox2.Size = new System.Drawing.Size(187, 21);
             this.textBox2.TabIndex = 1;
@@ -268,6 +283,7 @@
             this.textBox8.Location = new System.Drawing.Point(15, 10);
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.ShortcutsEnabled = false;
             this.textBox8.Size = new System.Drawing.Size(148, 21);
             this.textBox8.TabIndex = 2;
@@ -331,6 +347,7 @@
             this.textBox1.Location = new System.Drawing.Point(255, 11);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.ShortcutsEnabled = false;
             this.textBox1.Size = new System.Drawing.Size(413, 37);
             this.textBox1.TabIndex = 7;
@@ -356,6 +373,7 @@
             this.textBox9.Location = new System.Drawing.Point(15, 2);
             this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
             this.textBox9.ShortcutsEnabled = false;
             this.textBox9.Size = new System.Drawing.Size(148, 21);
             this.textBox9.TabIndex = 2;
@@ -392,6 +410,7 @@
             this.textBox10.Location = new System.Drawing.Point(554, 62);
             this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.ShortcutsEnabled = false;
             this.textBox10.Size = new System.Drawing.Size(267, 21);
             this.textBox10.TabIndex = 7;
@@ -406,6 +425,7 @@
             this.textBox11.Location = new System.Drawing.Point(11, 62);
             this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.ShortcutsEnabled = false;
             this.textBox11.Size = new System.Drawing.Size(265, 21);
             this.textBox11.TabIndex = 10;
@@ -419,18 +439,6 @@
             this.panelSimulation.Name = "panelSimulation";
             this.panelSimulation.Size = new System.Drawing.Size(267, 551);
             this.panelSimulation.TabIndex = 6;
-            // 
-            // btnSetMemory
-            // 
-            this.btnSetMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnSetMemory.ForeColor = System.Drawing.Color.Black;
-            this.btnSetMemory.Location = new System.Drawing.Point(79, 132);
-            this.btnSetMemory.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetMemory.Name = "btnSetMemory";
-            this.btnSetMemory.Size = new System.Drawing.Size(84, 32);
-            this.btnSetMemory.TabIndex = 8;
-            this.btnSetMemory.Text = "Set Memory";
-            this.btnSetMemory.UseVisualStyleBackColor = false;
             // 
             // mainForm
             // 
