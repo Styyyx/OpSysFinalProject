@@ -8,3 +8,14 @@ C:\Users\Ezra Daniel\Desktop\opsys\MemoryManagement\obj\Debug\MemoryManagement.e
 C:\Users\Ezra Daniel\Desktop\opsys\MemoryManagement\obj\Debug\MemoryManagement.pdb
 C:\Users\Ezra Daniel\Desktop\opsys\MemoryManagement\obj\Debug\MemoryManagement.Form1.resources
 C:\Users\Ezra Daniel\Desktop\opsys\MemoryManagement\obj\Debug\MemoryManagement.Form2.resources
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\bin\Debug\MemoryManagement.exe.config
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\bin\Debug\MemoryManagement.exe
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\bin\Debug\MemoryManagement.pdb
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.AssemblyReference.cache
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.SuggestedBindingRedirects.cache
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.Properties.Resources.resources
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.GenerateResource.cache
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.CoreCompileInputs.cache
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.exe
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.pdb
+C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.mainForm.resources

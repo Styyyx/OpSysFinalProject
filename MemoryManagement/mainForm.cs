@@ -12,29 +12,11 @@ using System.Data.SqlClient;
     
 namespace MemoryManagement
 {
-    public partial class Form2 : Form
+    public partial class mainForm : Form
     {
-        public Form2()
+        public mainForm()
         {
             InitializeComponent();
-        }
-
-   
-
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -124,12 +106,6 @@ namespace MemoryManagement
             lblCompact.Text = "Compact";
 
             return lblCompact;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
         }
 
         //-------------------------------------------------------------
