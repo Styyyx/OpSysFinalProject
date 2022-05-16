@@ -337,6 +337,7 @@
             this.btnCompact.TabIndex = 1;
             this.btnCompact.Text = "Compact";
             this.btnCompact.UseVisualStyleBackColor = false;
+            this.btnCompact.Click += new System.EventHandler(this.addCompacJob);
             // 
             // textBox1
             // 
