@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +7,10 @@ using System.Windows.Forms;
 
 namespace MemoryManagement
 {
-    public partial class Form1 : Form
+    internal class QueueItem : Label
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        public string Task;
+        public string JobName;
+        public int JobSize;
     }
 }
