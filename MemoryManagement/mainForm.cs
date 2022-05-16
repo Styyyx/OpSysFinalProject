@@ -15,6 +15,7 @@ namespace MemoryManagement
     public partial class mainForm : Form
     {
         int top = 0, left = 0;
+        int totalMemory = 0, osMemory = 0;
         List<Process> processList = new List<Process>();
 
         public mainForm()
@@ -22,7 +23,7 @@ namespace MemoryManagement
             InitializeComponent();
         }
 
-        //-------------------------------------------------------------
+        #region Queue System
         private void addQueueItem(string task)
         {
             Label queueItem = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@ namespace MemoryManagement
         {
             Button btn = sender as Button;
             panelQueue.Controls.Remove(btn.Parent);
-            top -= 25;
             int newTop = 0;
             foreach (Control ctrl in panelQueue.Controls)
             {
@@ -87,6 +87,7 @@ namespace MemoryManagement
                 lbl.Top = newTop;
                 newTop += 25;
             }
+            top = newTop;
         }
 
         private void addAllocJob(object sender, EventArgs e)
@@ -122,12 +123,38 @@ namespace MemoryManagement
             tboxSize.Text = "";
         }
 
+        private void clearQueue(object sender, EventArgs e)
+        {
+            panelQueue.Controls.Clear();
+            top = 0;
+        }
+
+        private void setMemory(object sender, EventArgs e)
+        {
+            if (tboxTotalMemory.Text == "" || tboxOSMemory.Text == "")
+            {
+                MessageBox.Show("Incomplete Input");
+                return;
+            }
+            tboxHeaderSimulation.Text += $" (total = {tboxTotalMemory.Text} KB)";
+            totalMemory = Convert.ToInt32(tboxTotalMemory.Text);
+            osMemory = Convert.ToInt32(tboxOSMemory.Text);
+        }
+
         public void addCompacJob(object sender, EventArgs e)
         {
             addQueueItem("compac");
             tboxProcessName.Text = "";
             tboxSize.Text = "";
         }
-        //-------------------------------------------------------------
+
+        
+        #endregion
+
+        #region Simulation System
+
+
+
+        #endregion
     }
 }

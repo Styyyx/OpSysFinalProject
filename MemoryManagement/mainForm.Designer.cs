@@ -55,7 +55,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.panelQueue = new System.Windows.Forms.Panel();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.tboxHeaderSimulation = new System.Windows.Forms.TextBox();
             this.panelSimulation = new System.Windows.Forms.Panel();
             this.panelDefMemory.SuspendLayout();
             this.panelAlloc.SuspendLayout();
@@ -89,6 +89,7 @@
             this.btnSetMemory.TabIndex = 8;
             this.btnSetMemory.Text = "Set Memory";
             this.btnSetMemory.UseVisualStyleBackColor = false;
+            this.btnSetMemory.Click += new System.EventHandler(this.setMemory);
             // 
             // tboxTotalMemory
             // 
@@ -391,6 +392,7 @@
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear Queue";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.clearQueue);
             // 
             // panelQueue
             // 
@@ -417,20 +419,20 @@
             this.textBox10.TabIndex = 7;
             this.textBox10.Text = "Queue";
             // 
-            // textBox11
+            // tboxHeaderSimulation
             // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.textBox11.Location = new System.Drawing.Point(11, 62);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.ShortcutsEnabled = false;
-            this.textBox11.Size = new System.Drawing.Size(265, 21);
-            this.textBox11.TabIndex = 10;
-            this.textBox11.Text = "Simulation";
+            this.tboxHeaderSimulation.BackColor = System.Drawing.SystemColors.Info;
+            this.tboxHeaderSimulation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tboxHeaderSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxHeaderSimulation.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tboxHeaderSimulation.Location = new System.Drawing.Point(11, 62);
+            this.tboxHeaderSimulation.Margin = new System.Windows.Forms.Padding(2);
+            this.tboxHeaderSimulation.Name = "tboxHeaderSimulation";
+            this.tboxHeaderSimulation.ReadOnly = true;
+            this.tboxHeaderSimulation.ShortcutsEnabled = false;
+            this.tboxHeaderSimulation.Size = new System.Drawing.Size(265, 21);
+            this.tboxHeaderSimulation.TabIndex = 10;
+            this.tboxHeaderSimulation.Text = "Simulation";
             // 
             // panelSimulation
             // 
@@ -447,7 +449,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(832, 649);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.tboxHeaderSimulation);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.panelQueue);
             this.Controls.Add(this.btnClear);
@@ -503,7 +505,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Panel panelQueue;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tboxHeaderSimulation;
         private System.Windows.Forms.Panel panelSimulation;
         private System.Windows.Forms.Button btnSetMemory;
     }
