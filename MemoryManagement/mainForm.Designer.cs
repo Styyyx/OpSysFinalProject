@@ -285,10 +285,11 @@
             this.textBox8.ForeColor = System.Drawing.SystemColors.InfoText;
             this.textBox8.Location = new System.Drawing.Point(54, 12);
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.ShortcutsEnabled = false;
-            this.textBox8.Size = new System.Drawing.Size(148, 21);
+            this.textBox8.Size = new System.Drawing.Size(148, 30);
             this.textBox8.TabIndex = 2;
             this.textBox8.Text = "Fitting Algorithm";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
