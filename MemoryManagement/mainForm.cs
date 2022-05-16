@@ -21,6 +21,7 @@ namespace MemoryManagement
         public mainForm()
         {
             InitializeComponent();
+            tboxOSMemory.Focus();
         }
 
         #region Queue System
@@ -131,11 +132,6 @@ namespace MemoryManagement
             top = 0;
         }
 
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void setMemory(object sender, EventArgs e)
         {
             if (tboxTotalMemory.Text == "" || tboxOSMemory.Text == "")
@@ -143,7 +139,8 @@ namespace MemoryManagement
                 MessageBox.Show("Incomplete Input");
                 return;
             }
-            tboxHeaderSimulation.Text += $" (total = {tboxTotalMemory.Text} KB)";
+            panelSimulation.Controls.Clear();
+            simTop = 0;
             totalMemory = Convert.ToInt32(tboxTotalMemory.Text);
             osMemory = Convert.ToInt32(tboxOSMemory.Text);
 
@@ -170,6 +167,8 @@ namespace MemoryManagement
 
         private void Simulate(object sender, EventArgs e)
         {
+            panelSimulation.Controls.Clear();
+            simTop = 0;
             foreach (QueueItem qItem in panelQueue.Controls)
             {
                 if (qItem.Task == "compac")
@@ -191,18 +190,20 @@ namespace MemoryManagement
         {
             Label simItem = new Label();
 
-            int height = (qItem.JobSize / totalMemory) * panelSimulation.Height;
+            int simItemHeight = Convert.ToInt32(((float)qItem.JobSize / (float)totalMemory) * (float)panelSimulation.Height);
 
-            simItem.AutoSize = false;
             simItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             simItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             simItem.Name = $"[{qItem.Task}][{qItem.JobName}][{qItem.JobSize}]";
-            simItem.Size = new System.Drawing.Size(panelSimulation.Width, height);
+            simItem.Size = new System.Drawing.Size(panelSimulation.Width, simItemHeight);
             simItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             simItem.Location = new System.Drawing.Point(0, simTop);
-            simItem.ForeColor = Color.Black;
-            simItem.BackColor = Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255));
+
+            int R = rand.Next(0, 255), G = rand.Next(0, 255), B = rand.Next(0, 255);
+            simItem.BackColor = Color.FromArgb(R, G, B);
+            simItem.ForeColor = (75 > (0.2126 * R + 0.7152 * G + 0.0722 * B)) ? Color.White : Color.Black;
             simItem.Text = $"{qItem.JobName}: {qItem.JobSize} KB";
+            simItem.TabIndex = 0;
 
             simTop += simItem.Height;
 
@@ -211,6 +212,11 @@ namespace MemoryManagement
 
 
         private void simDealloc()
+        {
+
+        }
+
+        private void radioButtonFirstFit_CheckedChanged(object sender, EventArgs e)
         {
 
         }

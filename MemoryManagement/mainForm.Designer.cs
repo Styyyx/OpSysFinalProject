@@ -43,10 +43,8 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panelFitAlgo = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.radioButtonFirstFit = new System.Windows.Forms.RadioButton();
-            this.radioButtonBestFit = new System.Windows.Forms.RadioButton();
             this.btnSimulate = new System.Windows.Forms.Button();
             this.btnCompact = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -57,10 +55,14 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.tboxHeaderSimulation = new System.Windows.Forms.TextBox();
             this.panelSimulation = new System.Windows.Forms.Panel();
+            this.rbtnFirstFit = new System.Windows.Forms.RadioButton();
+            this.rbtnBestFit = new System.Windows.Forms.RadioButton();
+            this.panelFitAlgo = new System.Windows.Forms.Panel();
             this.panelDefMemory.SuspendLayout();
             this.panelAlloc.SuspendLayout();
-            this.panelFitAlgo.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panelCompaction.SuspendLayout();
+            this.panelFitAlgo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDefMemory
@@ -86,7 +88,7 @@
             this.btnSetMemory.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetMemory.Name = "btnSetMemory";
             this.btnSetMemory.Size = new System.Drawing.Size(84, 32);
-            this.btnSetMemory.TabIndex = 8;
+            this.btnSetMemory.TabIndex = 3;
             this.btnSetMemory.Text = "Set Memory";
             this.btnSetMemory.UseVisualStyleBackColor = false;
             this.btnSetMemory.Click += new System.EventHandler(this.setMemory);
@@ -99,7 +101,7 @@
             this.tboxTotalMemory.Margin = new System.Windows.Forms.Padding(2);
             this.tboxTotalMemory.Name = "tboxTotalMemory";
             this.tboxTotalMemory.Size = new System.Drawing.Size(217, 23);
-            this.tboxTotalMemory.TabIndex = 6;
+            this.tboxTotalMemory.TabIndex = 2;
             // 
             // tboxOSMemory
             // 
@@ -109,7 +111,7 @@
             this.tboxOSMemory.Margin = new System.Windows.Forms.Padding(2);
             this.tboxOSMemory.Name = "tboxOSMemory";
             this.tboxOSMemory.Size = new System.Drawing.Size(217, 23);
-            this.tboxOSMemory.TabIndex = 5;
+            this.tboxOSMemory.TabIndex = 1;
             // 
             // textBox7
             // 
@@ -123,7 +125,7 @@
             this.textBox7.ReadOnly = true;
             this.textBox7.ShortcutsEnabled = false;
             this.textBox7.Size = new System.Drawing.Size(187, 16);
-            this.textBox7.TabIndex = 4;
+            this.textBox7.TabIndex = 99;
             this.textBox7.Text = "Total Memory (KB)";
             // 
             // textBox6
@@ -138,7 +140,7 @@
             this.textBox6.ReadOnly = true;
             this.textBox6.ShortcutsEnabled = false;
             this.textBox6.Size = new System.Drawing.Size(187, 16);
-            this.textBox6.TabIndex = 3;
+            this.textBox6.TabIndex = 99;
             this.textBox6.Text = "OS (KB)";
             // 
             // textBox5
@@ -153,7 +155,7 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.ShortcutsEnabled = false;
             this.textBox5.Size = new System.Drawing.Size(208, 21);
-            this.textBox5.TabIndex = 2;
+            this.textBox5.TabIndex = 99;
             this.textBox5.Text = "Define Memory";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -265,17 +267,16 @@
             this.textBox2.Text = "Create Job Here";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panelFitAlgo
+            // panel2
             // 
-            this.panelFitAlgo.BackColor = System.Drawing.SystemColors.Info;
-            this.panelFitAlgo.Controls.Add(this.textBox8);
-            this.panelFitAlgo.Controls.Add(this.radioButtonFirstFit);
-            this.panelFitAlgo.Controls.Add(this.radioButtonBestFit);
-            this.panelFitAlgo.Location = new System.Drawing.Point(288, 564);
-            this.panelFitAlgo.Margin = new System.Windows.Forms.Padding(2);
-            this.panelFitAlgo.Name = "panelFitAlgo";
-            this.panelFitAlgo.Size = new System.Drawing.Size(252, 76);
-            this.panelFitAlgo.TabIndex = 3;
+            this.panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.panel2.Controls.Add(this.textBox8);
+            this.panel2.Controls.Add(this.panelFitAlgo);
+            this.panel2.Location = new System.Drawing.Point(288, 564);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(252, 76);
+            this.panel2.TabIndex = 3;
             // 
             // textBox8
             // 
@@ -293,33 +294,6 @@
             this.textBox8.TabIndex = 2;
             this.textBox8.Text = "Fitting Algorithm";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
-            // 
-            // radioButtonFirstFit
-            // 
-            this.radioButtonFirstFit.AutoSize = true;
-            this.radioButtonFirstFit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonFirstFit.Location = new System.Drawing.Point(136, 46);
-            this.radioButtonFirstFit.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButtonFirstFit.Name = "radioButtonFirstFit";
-            this.radioButtonFirstFit.Size = new System.Drawing.Size(81, 21);
-            this.radioButtonFirstFit.TabIndex = 1;
-            this.radioButtonFirstFit.TabStop = true;
-            this.radioButtonFirstFit.Text = "First Fit";
-            this.radioButtonFirstFit.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonBestFit
-            // 
-            this.radioButtonBestFit.AutoSize = true;
-            this.radioButtonBestFit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonBestFit.Location = new System.Drawing.Point(34, 46);
-            this.radioButtonBestFit.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButtonBestFit.Name = "radioButtonBestFit";
-            this.radioButtonBestFit.Size = new System.Drawing.Size(81, 21);
-            this.radioButtonBestFit.TabIndex = 0;
-            this.radioButtonBestFit.TabStop = true;
-            this.radioButtonBestFit.Text = "Best Fit";
-            this.radioButtonBestFit.UseVisualStyleBackColor = true;
             // 
             // btnSimulate
             // 
@@ -341,7 +315,7 @@
             this.btnCompact.Margin = new System.Windows.Forms.Padding(2);
             this.btnCompact.Name = "btnCompact";
             this.btnCompact.Size = new System.Drawing.Size(84, 32);
-            this.btnCompact.TabIndex = 1;
+            this.btnCompact.TabIndex = 8;
             this.btnCompact.Text = "Compact";
             this.btnCompact.UseVisualStyleBackColor = false;
             this.btnCompact.Click += new System.EventHandler(this.addCompacJob);
@@ -454,6 +428,42 @@
             this.panelSimulation.Size = new System.Drawing.Size(267, 550);
             this.panelSimulation.TabIndex = 6;
             // 
+            // rbtnFirstFit
+            // 
+            this.rbtnFirstFit.AutoSize = true;
+            this.rbtnFirstFit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnFirstFit.Location = new System.Drawing.Point(104, 4);
+            this.rbtnFirstFit.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnFirstFit.Name = "rbtnFirstFit";
+            this.rbtnFirstFit.Size = new System.Drawing.Size(81, 21);
+            this.rbtnFirstFit.TabIndex = 1;
+            this.rbtnFirstFit.TabStop = true;
+            this.rbtnFirstFit.Text = "First Fit";
+            this.rbtnFirstFit.UseVisualStyleBackColor = true;
+            this.rbtnFirstFit.CheckedChanged += new System.EventHandler(this.radioButtonFirstFit_CheckedChanged);
+            // 
+            // rbtnBestFit
+            // 
+            this.rbtnBestFit.AutoSize = true;
+            this.rbtnBestFit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnBestFit.Location = new System.Drawing.Point(4, 4);
+            this.rbtnBestFit.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnBestFit.Name = "rbtnBestFit";
+            this.rbtnBestFit.Size = new System.Drawing.Size(81, 21);
+            this.rbtnBestFit.TabIndex = 0;
+            this.rbtnBestFit.TabStop = true;
+            this.rbtnBestFit.Text = "Best Fit";
+            this.rbtnBestFit.UseVisualStyleBackColor = true;
+            // 
+            // panelFitAlgo
+            // 
+            this.panelFitAlgo.Controls.Add(this.rbtnBestFit);
+            this.panelFitAlgo.Controls.Add(this.rbtnFirstFit);
+            this.panelFitAlgo.Location = new System.Drawing.Point(30, 37);
+            this.panelFitAlgo.Name = "panelFitAlgo";
+            this.panelFitAlgo.Size = new System.Drawing.Size(187, 30);
+            this.panelFitAlgo.TabIndex = 3;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,7 +478,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panelSimulation);
             this.Controls.Add(this.btnSimulate);
-            this.Controls.Add(this.panelFitAlgo);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelAlloc);
             this.Controls.Add(this.panelDefMemory);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -479,10 +489,12 @@
             this.panelDefMemory.PerformLayout();
             this.panelAlloc.ResumeLayout(false);
             this.panelAlloc.PerformLayout();
-            this.panelFitAlgo.ResumeLayout(false);
-            this.panelFitAlgo.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panelCompaction.ResumeLayout(false);
             this.panelCompaction.PerformLayout();
+            this.panelFitAlgo.ResumeLayout(false);
+            this.panelFitAlgo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -492,7 +504,7 @@
 
         private System.Windows.Forms.Panel panelDefMemory;
         private System.Windows.Forms.Panel panelAlloc;
-        private System.Windows.Forms.Panel panelFitAlgo;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSimulate;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
@@ -505,8 +517,6 @@
         private System.Windows.Forms.TextBox tboxOSMemory;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button btnAlloc;
-        private System.Windows.Forms.RadioButton radioButtonFirstFit;
-        private System.Windows.Forms.RadioButton radioButtonBestFit;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button btnDealloc;
         private System.Windows.Forms.Button btnCompact;
@@ -519,5 +529,8 @@
         private System.Windows.Forms.TextBox tboxHeaderSimulation;
         private System.Windows.Forms.Panel panelSimulation;
         private System.Windows.Forms.Button btnSetMemory;
+        private System.Windows.Forms.Panel panelFitAlgo;
+        private System.Windows.Forms.RadioButton rbtnBestFit;
+        private System.Windows.Forms.RadioButton rbtnFirstFit;
     }
 }
