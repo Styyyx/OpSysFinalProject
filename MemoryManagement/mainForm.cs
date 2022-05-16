@@ -16,7 +16,7 @@ namespace MemoryManagement
     {
         int top = 0, left = 0;
         int totalMemory = 0, osMemory = 0;
-        List<Process> processList = new List<Process>();
+        Random rand = new Random();
 
         public mainForm()
         {
@@ -26,7 +26,7 @@ namespace MemoryManagement
         #region Queue System
         private void addQueueItem(string task)
         {
-            Label queueItem = new System.Windows.Forms.Label();
+            QueueItem queueItem = new QueueItem();
             string jobName = tboxProcessName.Text, jobSize = "";
             if (task == "compac")
             {
@@ -47,8 +47,10 @@ namespace MemoryManagement
                 queueItem.BackColor = System.Drawing.Color.GreenYellow;
                 queueItem.Text = $"Allocate: {jobName} {jobSize} KB ";
             }
-            processList.Add(new Process(task, jobName, Convert.ToInt32(jobSize)));
 
+            queueItem.Task = task;
+            queueItem.JobName = jobName;
+            queueItem.JobSize = Convert.ToInt32(jobSize);
 
             queueItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             queueItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,6 +146,12 @@ namespace MemoryManagement
             tboxHeaderSimulation.Text += $" (total = {tboxTotalMemory.Text} KB)";
             totalMemory = Convert.ToInt32(tboxTotalMemory.Text);
             osMemory = Convert.ToInt32(tboxOSMemory.Text);
+
+            QueueItem osItem = new QueueItem();
+            osItem.Task = "Alloc";
+            osItem.JobName = "OS";
+            osItem.JobSize = osMemory;
+            simAlloc(osItem);
         }
 
         public void addCompacJob(object sender, EventArgs e)
@@ -153,12 +161,69 @@ namespace MemoryManagement
             tboxSize.Text = "";
         }
 
-        
+
         #endregion
 
         #region Simulation System
 
+        int simTop = 0;
 
+        private void Simulate(object sender, EventArgs e)
+        {
+            foreach (QueueItem qItem in panelQueue.Controls)
+            {
+                if (qItem.Task == "compac")
+                {
+                    simCompac();
+                }
+                else if (qItem.Task == "dealloc")
+                {
+                    simDealloc();
+                }
+                else
+                {
+                    simAlloc(qItem);
+                }
+            }
+        }
+
+        private void simAlloc(QueueItem qItem)
+        {
+            Label simItem = new Label();
+
+            int height = (qItem.JobSize / totalMemory) * panelSimulation.Height;
+
+            simItem.AutoSize = false;
+            simItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            simItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            simItem.Name = $"[{qItem.Task}][{qItem.JobName}][{qItem.JobSize}]";
+            simItem.Size = new System.Drawing.Size(panelSimulation.Width, height);
+            simItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            simItem.Location = new System.Drawing.Point(0, simTop);
+            simItem.ForeColor = Color.Black;
+            simItem.BackColor = Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255));
+            simItem.Text = $"{qItem.JobName}: {qItem.JobSize} KB";
+
+            simTop += simItem.Height;
+
+            panelSimulation.Controls.Add(simItem);
+        }
+
+
+        private void simDealloc()
+        {
+
+        }
+
+        private void simCompac()
+        {
+
+        }
+
+        private void addSimItem()
+        {
+
+        }
 
         #endregion
     }

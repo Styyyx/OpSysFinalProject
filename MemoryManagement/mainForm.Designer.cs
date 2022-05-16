@@ -331,6 +331,7 @@
             this.btnSimulate.TabIndex = 4;
             this.btnSimulate.Text = "Simulate";
             this.btnSimulate.UseVisualStyleBackColor = false;
+            this.btnSimulate.Click += new System.EventHandler(this.Simulate);
             // 
             // btnCompact
             // 
@@ -446,10 +447,11 @@
             // panelSimulation
             // 
             this.panelSimulation.BackColor = System.Drawing.SystemColors.Info;
+            this.panelSimulation.ImeMode = System.Windows.Forms.ImeMode.On;
             this.panelSimulation.Location = new System.Drawing.Point(9, 87);
             this.panelSimulation.Margin = new System.Windows.Forms.Padding(2);
             this.panelSimulation.Name = "panelSimulation";
-            this.panelSimulation.Size = new System.Drawing.Size(267, 551);
+            this.panelSimulation.Size = new System.Drawing.Size(267, 550);
             this.panelSimulation.TabIndex = 6;
             // 
             // mainForm

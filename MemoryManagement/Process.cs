@@ -3,20 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MemoryManagement
 {
-    internal class Process
+    internal class QueueItem : Label
     {
-        string Task;
-        string JobName;
-        int JobSize;
-        public Process(string task, string jobName, int jobSize)
-        {
-            Task = task;
-            JobName = jobName;
-            JobSize = jobSize;
-        }
-        
+        public string Task;
+        public string JobName;
+        public int JobSize;
     }
 }
