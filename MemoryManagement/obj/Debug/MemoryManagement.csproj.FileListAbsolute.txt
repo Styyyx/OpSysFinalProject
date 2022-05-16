@@ -19,3 +19,13 @@ C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\Memo
 C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.exe
 C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.pdb
 C:\Users\Patrick\Desktop\School\3rd Year - 2nd Sem\Op Sys\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.mainForm.resources
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\bin\Debug\MemoryManagement.exe.config
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\bin\Debug\MemoryManagement.exe
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\bin\Debug\MemoryManagement.pdb
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.AssemblyReference.cache
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.mainForm.resources
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.Properties.Resources.resources
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.GenerateResource.cache
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.csproj.CoreCompileInputs.cache
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.exe
+C:\Users\RJ\Desktop\Programming\OpSysFinalProject\MemoryManagement\obj\Debug\MemoryManagement.pdb

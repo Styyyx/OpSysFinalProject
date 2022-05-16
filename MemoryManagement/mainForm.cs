@@ -129,6 +129,11 @@ namespace MemoryManagement
             top = 0;
         }
 
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void setMemory(object sender, EventArgs e)
         {
             if (tboxTotalMemory.Text == "" || tboxOSMemory.Text == "")
