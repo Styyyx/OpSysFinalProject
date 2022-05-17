@@ -91,6 +91,14 @@ namespace MemoryManagement
                 return;
             }
             // validation: check for existing job
+            foreach (QueueItem qItem in panelQueue.Controls)
+            {
+                if (qItem.Name == tboxProcessName.Text)
+                {
+                    MessageBox.Show("Job has already been allocated");
+                    return;
+                }
+            }
 
             addItem("alloc");
             tboxProcessName.Text = "";
@@ -154,6 +162,7 @@ namespace MemoryManagement
                 osItem.JobName = "OS";
                 osItem.JobSize = osMemory;
                 simAlloc(osItem);
+                RefreshPanelSimualation();
             }
         }
 
@@ -174,7 +183,6 @@ namespace MemoryManagement
         private void RefreshPanelSimualation()
         {
             panelSimulation.Controls.Clear();
-            CheckFreeMemory();
             foreach (SimItem item in SimList.ToList())
             {
                 item.Visible = true;
@@ -185,35 +193,48 @@ namespace MemoryManagement
         private void CheckFreeMemory()
         {
             int lastBot = 0;
-            foreach (SimItem item in SimList.ToList())
+            List<SimItem> CopySimList = SimList.ToList();
+            foreach (SimItem item in CopySimList)
             {
-                if (SimList.Last() == item)
+                if (CopySimList.Last() == item)
                 {
-                    int lastItemBot = item.Top + item.Height, memSize = totalMemory - (item.jobMemoryStart+item.jobSize);
-                    AddFreeMemory(lastBot, item.Top - lastBot, memSize);
+                    int lastItemBot = item.Top + item.Height, memSize = 0;
 
-                    // if item is last but there is still space after it
+                    // has free memory between items
+                    if (SimList.Count() > 1 && lastBot != item.Top)
+                    {
+                        SimItem prevItem = SimList[SimList.IndexOf(item) - 1];
+                        memSize = item.jobMemoryStart - (prevItem.jobMemoryStart + prevItem.jobSize);
+                        AddFreeMemory(lastBot, item.Top - lastBot, memSize, prevItem.jobMemoryStart + prevItem.jobSize);
+                    }
+
+                    // if item is last but there is still free memory after it
                     if ((lastItemBot) != panelSimulation.Height)
                     {
-                        AddFreeMemory(lastItemBot, panelSimulation.Height - lastItemBot, memSize);
+                        memSize = totalMemory - (item.jobMemoryStart + item.jobSize);
+                        AddFreeMemory(lastItemBot, panelSimulation.Height - lastItemBot, memSize, item.jobMemoryStart + item.jobSize);
                     }
                     return;
                 }
 
+                // no free memory between last item and current item
                 if (item.Top == lastBot)
                 {
                     lastBot += item.Height;
                 }
+                // free memory between non-last items
                 else
                 {
-                    int height = item.Top - lastBot, memSize = totalMemory - (item.jobMemoryStart + item.jobSize);
-                    AddFreeMemory(lastBot, height, memSize);
+                    int height = item.Top - lastBot;
+                    SimItem prevItem = SimList[SimList.IndexOf(item) - 1];
+                    int memSize = item.jobMemoryStart - (prevItem.jobMemoryStart + prevItem.jobSize);
+                    AddFreeMemory(lastBot, height, memSize, item.jobMemoryStart + item.jobSize);
                     lastBot += height + item.Height;
                 }
             }
         }
 
-        private void AddFreeMemory(int top, int height, int memorySize)
+        private void AddFreeMemory(int top, int height, int memorySize, int jobMemoryStart)
         {
             // Add free memory block
             SimItem freeMem = new SimItem();
@@ -225,6 +246,9 @@ namespace MemoryManagement
             freeMem.Visible = false;
             freeMem.ForeColor = Color.Black;
             freeMem.BackColor = Color.White;
+            freeMem.jobName = "Free Memory";
+            freeMem.jobSize = memorySize;
+            freeMem.jobMemoryStart = jobMemoryStart;
 
             SimList.Add(freeMem);
         }
@@ -243,13 +267,14 @@ namespace MemoryManagement
                 }
                 else if (qItem.Task == "dealloc")
                 {
-                    simDealloc();
+                    simDealloc(qItem);
                 }
                 else
                 {
                     simAlloc(qItem);
                 }
             }
+            CheckFreeMemory();
             RefreshPanelSimualation();
         }
 
@@ -269,6 +294,15 @@ namespace MemoryManagement
             simItem.ForeColor = (75 > (0.2126 * R + 0.7152 * G + 0.0722 * B)) ? Color.White : Color.Black;
             simItem.Text = $"{qItem.JobName}: {qItem.JobSize} KB";
 
+            if (qItem.JobName == "OS")
+            {
+                currentSimTop = 0;
+            }
+            if (bestFit)
+            {
+
+            }
+
             simItem.jobMemoryStart = currentMemoryStart;
             simItem.jobSize = qItem.JobSize;
             simItem.jobName = qItem.JobName;
@@ -281,9 +315,15 @@ namespace MemoryManagement
         }
 
 
-        private void simDealloc()
+        private void simDealloc(QueueItem qItem)
         {
-
+            foreach (SimItem simItem in SimList.ToList())
+            {
+                if (simItem.jobName == qItem.JobName)
+                {
+                    SimList.Remove(simItem);
+                }
+            }
         }
 
         private void radioButtonFirstFit_CheckedChanged(object sender, EventArgs e)
