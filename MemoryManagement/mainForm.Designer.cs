@@ -482,6 +482,7 @@
             this.Controls.Add(this.panelAlloc);
             this.Controls.Add(this.panelDefMemory);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Memory Management";
