@@ -27,6 +27,7 @@ namespace MemoryManagement
             btnRmvQueItem.Name = $"btnRmvLbl{this.Name}";
             btnRmvQueItem.Size = new System.Drawing.Size(25, 25);
             btnRmvQueItem.TabIndex = 0;
+            btnRmvQueItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10);
             btnRmvQueItem.Text = "X";
             btnRmvQueItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             btnRmvQueItem.UseVisualStyleBackColor = false;
