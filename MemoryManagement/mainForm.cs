@@ -18,6 +18,9 @@ namespace MemoryManagement
         int totalMemory = 0, osMemory = 0;
         bool bestFit = true;
         Random rand = new Random();
+        int currentSimTop = 0;
+        int currentMemoryStart = 0;
+        List<SimItem> SimList = new List<SimItem>() { };
 
         public mainForm()
         {
@@ -90,19 +93,25 @@ namespace MemoryManagement
                 MessageBox.Show("No Size Entered");
                 return;
             }
-            // validation: check for existing job
-            foreach (QueueItem qItem in panelQueue.Controls)
+            if (tboxProcessName.Text == "OS" || tboxProcessName.Text == "Free Memory")
             {
-                if (qItem.Name == tboxProcessName.Text)
-                {
-                    MessageBox.Show("Job has already been allocated");
-                    return;
-                }
+                MessageBox.Show("Process Name is reserved");
             }
-
-            addItem("alloc");
-            tboxProcessName.Text = "";
-            tboxSize.Text = "";
+            else
+            {
+                // validation: check for existing job
+                foreach (QueueItem qItem in panelQueue.Controls)
+                {
+                    if (qItem.JobName == tboxProcessName.Text)
+                    {
+                        MessageBox.Show("Job has already been allocated");
+                        return;
+                    }
+                }
+                addItem("alloc");
+                tboxProcessName.Text = "";
+                tboxSize.Text = "";
+            }
         }
 
         public void addDeallocJob(object sender, EventArgs e)
@@ -139,7 +148,14 @@ namespace MemoryManagement
             top = 0;
         }
 
-        private void setMemory(object sender, EventArgs e)
+        public void addCompacJob(object sender, EventArgs e)
+        {
+            addItem("compac");
+            tboxProcessName.Text = "";
+            tboxSize.Text = "";
+        }
+
+        private void SetMemory(object sender, EventArgs e)
         {
             if (tboxTotalMemory.Text == "")
             {
@@ -151,34 +167,48 @@ namespace MemoryManagement
                 MessageBox.Show("OS Memory Not Set");
                 return;
             }
-            else
+            if (SimList.Any(item => item.jobName == "OS"))
             {
-                SimList.Clear();
-                totalMemory = Convert.ToInt32(tboxTotalMemory.Text);
-                osMemory = Convert.ToInt32(tboxOSMemory.Text);
-
-                QueueItem osItem = new QueueItem();
-                osItem.Task = "Alloc";
-                osItem.JobName = "OS";
-                osItem.JobSize = osMemory;
-                simAlloc(osItem);
-                RefreshPanelSimualation();
+                SimList.RemoveAll(item => item.jobName == "OS");
             }
-        }
 
-        public void addCompacJob(object sender, EventArgs e)
-        {
-            addItem("compac");
-            tboxProcessName.Text = "";
-            tboxSize.Text = "";
-        }
+            SimList.Clear();
+            panelSimulation.Controls.Clear();
 
+            totalMemory = Convert.ToInt32(tboxTotalMemory.Text);
+            osMemory = Convert.ToInt32(tboxOSMemory.Text);
+
+            SimItem osSimItem = new SimItem();
+            osSimItem.jobName = "OS";
+            osSimItem.jobSize = osMemory;
+            osSimItem.jobMemoryStart = 0;
+            osSimItem.Height = Convert.ToInt32(((float)osMemory / (float)totalMemory) * (float)panelSimulation.Height);
+            osSimItem.Width = panelSimulation.Width;
+            osSimItem.BackColor = Color.White;
+            osSimItem.ForeColor = Color.Black;
+            osSimItem.Text = $"OS: {osMemory} KB";
+
+            SimList.Add(osSimItem);
+            panelSimulation.Controls.Add(osSimItem);
+        }
 
         #endregion
 
+        private (Color, Color) GetRandomColor()
+        {
+            Color backColor, foreColor;
+            int R = rand.Next(0, 255), G = rand.Next(0, 255), B = rand.Next(0, 255);
+            backColor = Color.FromArgb(R, G, B);
+
+            // Forecolor depends if BackColor too dark based on luma coefficients
+            foreColor = (75 > (0.2126 * R + 0.7152 * G + 0.0722 * B)) ? Color.White : Color.Black;
+
+            return (backColor, foreColor);
+        }
+
         #region Simulation System
 
-        List<SimItem> SimList = new List<SimItem>() { };
+
 
         private void RefreshPanelSimualation()
         {
@@ -222,6 +252,7 @@ namespace MemoryManagement
                 {
                     lastBot += item.Height;
                 }
+
                 // free memory between non-last items
                 else
                 {
@@ -252,13 +283,18 @@ namespace MemoryManagement
 
             SimList.Add(freeMem);
         }
+
         private void Simulate(object sender, EventArgs e)
         {
+            panelSimulation.Controls.Clear();
             SimList.Clear();
             currentSimTop = 0;
             currentMemoryStart = 0;
-            btnSetMemory.PerformClick();
             bestFit = (rbtnBestFit.Checked) ? true : false;
+
+            SetMemory(sender, e);
+            AddFreeMemory(currentSimTop, panelSimulation.Height - currentSimTop, totalMemory - osMemory, currentMemoryStart);
+
             foreach (QueueItem qItem in panelQueue.Controls)
             {
                 if (qItem.Task == "compac")
@@ -274,34 +310,50 @@ namespace MemoryManagement
                     simAlloc(qItem);
                 }
             }
-            CheckFreeMemory();
-            RefreshPanelSimualation();
-        }
 
-        int currentSimTop = 0;
-        int currentMemoryStart = 0;
+        }
 
         private void simAlloc(QueueItem qItem)
         {
+            bool allocated = false;
+            //List<SimItem> CopySimList = SimList.ToList();
+
+            if (bestFit)
+            {
+                foreach (SimItem item in SimList)
+                {
+                    if (item.jobName == "Free Memory" || item.jobSize >= qItem.JobSize)
+                    {
+                        if (item.jobSize == qItem.JobSize)
+                        {
+                            item.jobName = qItem.JobName;
+                            item.Text = $"{qItem.JobName}: {item.jobSize} KB";
+
+                            (Color back, Color fore) = GetRandomColor();
+                            item.BackColor = back;
+                            item.ForeColor = fore;
+
+                            return;
+                        }
+                    }
+                }
+            }
+
             SimItem simItem = new SimItem();
 
             int simItemHeight = Convert.ToInt32(((float)qItem.JobSize / (float)totalMemory) * (float)panelSimulation.Height);
 
             simItem.Name = $"[{qItem.Task}][{qItem.JobName}][{qItem.JobSize}]";
             simItem.Size = new System.Drawing.Size(panelSimulation.Width, simItemHeight);
+
+            // Set random BackColor
             int R = rand.Next(0, 255), G = rand.Next(0, 255), B = rand.Next(0, 255);
             simItem.BackColor = Color.FromArgb(R, G, B);
-            simItem.ForeColor = (75 > (0.2126 * R + 0.7152 * G + 0.0722 * B)) ? Color.White : Color.Black;
-            simItem.Text = $"{qItem.JobName}: {qItem.JobSize} KB";
 
-            if (qItem.JobName == "OS")
-            {
-                currentSimTop = 0;
-            }
-            if (bestFit)
-            {
+            // Forecolor depends if BackColor too dark based on luma coefficients
+            //simItem.ForeColor = (75 > (0.2126 * R + 0.7152 * G + 0.0722 * B)) ? Color.White : Color.Black;
+            //simItem.Text = $"{qItem.JobName}: {qItem.JobSize} KB";
 
-            }
 
             simItem.jobMemoryStart = currentMemoryStart;
             simItem.jobSize = qItem.JobSize;
@@ -317,6 +369,11 @@ namespace MemoryManagement
 
         private void simDealloc(QueueItem qItem)
         {
+            if (qItem.JobName == "OS")
+            {
+                MessageBox.Show("Cannot deallocate OS");
+                return;
+            }
             foreach (SimItem simItem in SimList.ToList())
             {
                 if (simItem.jobName == qItem.JobName)
@@ -326,17 +383,7 @@ namespace MemoryManagement
             }
         }
 
-        private void radioButtonFirstFit_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void simCompac()
-        {
-
-        }
-
-        private void addSimItem()
         {
 
         }

@@ -78,7 +78,8 @@
             this.panelDefMemory.Margin = new System.Windows.Forms.Padding(2);
             this.panelDefMemory.Name = "panelDefMemory";
             this.panelDefMemory.Size = new System.Drawing.Size(252, 175);
-            this.panelDefMemory.TabIndex = 99;
+            this.panelDefMemory.TabIndex = 1;
+            this.panelDefMemory.TabStop = true;
             // 
             // btnSetMemory
             // 
@@ -88,10 +89,10 @@
             this.btnSetMemory.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetMemory.Name = "btnSetMemory";
             this.btnSetMemory.Size = new System.Drawing.Size(84, 32);
-            this.btnSetMemory.TabIndex = 3;
+            this.btnSetMemory.TabIndex = 2;
             this.btnSetMemory.Text = "Set Memory";
             this.btnSetMemory.UseVisualStyleBackColor = false;
-            this.btnSetMemory.Click += new System.EventHandler(this.setMemory);
+            this.btnSetMemory.Click += new System.EventHandler(this.SetMemory);
             // 
             // tboxTotalMemory
             // 
@@ -101,7 +102,7 @@
             this.tboxTotalMemory.Margin = new System.Windows.Forms.Padding(2);
             this.tboxTotalMemory.Name = "tboxTotalMemory";
             this.tboxTotalMemory.Size = new System.Drawing.Size(217, 23);
-            this.tboxTotalMemory.TabIndex = 2;
+            this.tboxTotalMemory.TabIndex = 1;
             // 
             // tboxOSMemory
             // 
@@ -111,7 +112,7 @@
             this.tboxOSMemory.Margin = new System.Windows.Forms.Padding(2);
             this.tboxOSMemory.Name = "tboxOSMemory";
             this.tboxOSMemory.Size = new System.Drawing.Size(217, 23);
-            this.tboxOSMemory.TabIndex = 1;
+            this.tboxOSMemory.TabIndex = 0;
             // 
             // textBox7
             // 
@@ -126,6 +127,7 @@
             this.textBox7.ShortcutsEnabled = false;
             this.textBox7.Size = new System.Drawing.Size(187, 16);
             this.textBox7.TabIndex = 99;
+            this.textBox7.TabStop = false;
             this.textBox7.Text = "Total Memory (KB)";
             // 
             // textBox6
@@ -141,6 +143,7 @@
             this.textBox6.ShortcutsEnabled = false;
             this.textBox6.Size = new System.Drawing.Size(187, 16);
             this.textBox6.TabIndex = 99;
+            this.textBox6.TabStop = false;
             this.textBox6.Text = "OS (KB)";
             // 
             // textBox5
@@ -156,6 +159,7 @@
             this.textBox5.ShortcutsEnabled = false;
             this.textBox5.Size = new System.Drawing.Size(208, 21);
             this.textBox5.TabIndex = 99;
+            this.textBox5.TabStop = false;
             this.textBox5.Text = "Define Memory";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -173,7 +177,7 @@
             this.panelAlloc.Margin = new System.Windows.Forms.Padding(2);
             this.panelAlloc.Name = "panelAlloc";
             this.panelAlloc.Size = new System.Drawing.Size(252, 208);
-            this.panelAlloc.TabIndex = 99;
+            this.panelAlloc.TabIndex = 2;
             // 
             // btnDealloc
             // 
@@ -182,7 +186,7 @@
             this.btnDealloc.Margin = new System.Windows.Forms.Padding(2);
             this.btnDealloc.Name = "btnDealloc";
             this.btnDealloc.Size = new System.Drawing.Size(84, 32);
-            this.btnDealloc.TabIndex = 7;
+            this.btnDealloc.TabIndex = 6;
             this.btnDealloc.Text = "Deallocate";
             this.btnDealloc.UseVisualStyleBackColor = false;
             this.btnDealloc.Click += new System.EventHandler(this.addDeallocJob);
@@ -195,7 +199,7 @@
             this.btnAlloc.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlloc.Name = "btnAlloc";
             this.btnAlloc.Size = new System.Drawing.Size(84, 32);
-            this.btnAlloc.TabIndex = 6;
+            this.btnAlloc.TabIndex = 5;
             this.btnAlloc.Text = "Allocate";
             this.btnAlloc.UseVisualStyleBackColor = false;
             this.btnAlloc.Click += new System.EventHandler(this.addAllocJob);
@@ -208,7 +212,7 @@
             this.tboxSize.Margin = new System.Windows.Forms.Padding(2);
             this.tboxSize.Name = "tboxSize";
             this.tboxSize.Size = new System.Drawing.Size(217, 23);
-            this.tboxSize.TabIndex = 5;
+            this.tboxSize.TabIndex = 4;
             // 
             // tboxProcessName
             // 
@@ -218,7 +222,7 @@
             this.tboxProcessName.Margin = new System.Windows.Forms.Padding(2);
             this.tboxProcessName.Name = "tboxProcessName";
             this.tboxProcessName.Size = new System.Drawing.Size(217, 23);
-            this.tboxProcessName.TabIndex = 4;
+            this.tboxProcessName.TabIndex = 3;
             // 
             // textBox4
             // 
@@ -233,6 +237,7 @@
             this.textBox4.ShortcutsEnabled = false;
             this.textBox4.Size = new System.Drawing.Size(187, 16);
             this.textBox4.TabIndex = 3;
+            this.textBox4.TabStop = false;
             this.textBox4.Text = "Size (KB)";
             // 
             // textBox3
@@ -248,6 +253,7 @@
             this.textBox3.ShortcutsEnabled = false;
             this.textBox3.Size = new System.Drawing.Size(187, 16);
             this.textBox3.TabIndex = 2;
+            this.textBox3.TabStop = false;
             this.textBox3.Text = "Proccess Name";
             // 
             // textBox2
@@ -264,6 +270,7 @@
             this.textBox2.ShortcutsEnabled = false;
             this.textBox2.Size = new System.Drawing.Size(187, 21);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TabStop = false;
             this.textBox2.Text = "Create Job Here";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -276,7 +283,7 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(252, 76);
-            this.panel2.TabIndex = 3;
+            this.panel2.TabIndex = 4;
             // 
             // textBox8
             // 
@@ -292,6 +299,7 @@
             this.textBox8.ShortcutsEnabled = false;
             this.textBox8.Size = new System.Drawing.Size(148, 30);
             this.textBox8.TabIndex = 2;
+            this.textBox8.TabStop = false;
             this.textBox8.Text = "Fitting Algorithm";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -313,7 +321,7 @@
             this.rbtnBestFit.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnBestFit.Name = "rbtnBestFit";
             this.rbtnBestFit.Size = new System.Drawing.Size(81, 21);
-            this.rbtnBestFit.TabIndex = 0;
+            this.rbtnBestFit.TabIndex = 8;
             this.rbtnBestFit.TabStop = true;
             this.rbtnBestFit.Text = "Best Fit";
             this.rbtnBestFit.UseVisualStyleBackColor = true;
@@ -326,10 +334,10 @@
             this.rbtnFirstFit.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnFirstFit.Name = "rbtnFirstFit";
             this.rbtnFirstFit.Size = new System.Drawing.Size(81, 21);
-            this.rbtnFirstFit.TabIndex = 1;
+            this.rbtnFirstFit.TabIndex = 9;
+            this.rbtnFirstFit.TabStop = true;
             this.rbtnFirstFit.Text = "First Fit";
             this.rbtnFirstFit.UseVisualStyleBackColor = true;
-            this.rbtnFirstFit.CheckedChanged += new System.EventHandler(this.radioButtonFirstFit_CheckedChanged);
             // 
             // btnSimulate
             // 
@@ -338,7 +346,7 @@
             this.btnSimulate.Margin = new System.Windows.Forms.Padding(2);
             this.btnSimulate.Name = "btnSimulate";
             this.btnSimulate.Size = new System.Drawing.Size(166, 32);
-            this.btnSimulate.TabIndex = 4;
+            this.btnSimulate.TabIndex = 11;
             this.btnSimulate.Text = "Simulate";
             this.btnSimulate.UseVisualStyleBackColor = false;
             this.btnSimulate.Click += new System.EventHandler(this.Simulate);
@@ -351,7 +359,7 @@
             this.btnCompact.Margin = new System.Windows.Forms.Padding(2);
             this.btnCompact.Name = "btnCompact";
             this.btnCompact.Size = new System.Drawing.Size(84, 32);
-            this.btnCompact.TabIndex = 8;
+            this.btnCompact.TabIndex = 7;
             this.btnCompact.Text = "Compact";
             this.btnCompact.UseVisualStyleBackColor = false;
             this.btnCompact.Click += new System.EventHandler(this.addCompacJob);
@@ -369,6 +377,7 @@
             this.textBox1.ShortcutsEnabled = false;
             this.textBox1.Size = new System.Drawing.Size(413, 37);
             this.textBox1.TabIndex = 7;
+            this.textBox1.TabStop = false;
             this.textBox1.Text = "Memory Management";
             // 
             // panelCompaction
@@ -380,7 +389,7 @@
             this.panelCompaction.Margin = new System.Windows.Forms.Padding(2);
             this.panelCompaction.Name = "panelCompaction";
             this.panelCompaction.Size = new System.Drawing.Size(252, 81);
-            this.panelCompaction.TabIndex = 99;
+            this.panelCompaction.TabIndex = 3;
             // 
             // textBox9
             // 
@@ -395,6 +404,7 @@
             this.textBox9.ShortcutsEnabled = false;
             this.textBox9.Size = new System.Drawing.Size(148, 21);
             this.textBox9.TabIndex = 2;
+            this.textBox9.TabStop = false;
             this.textBox9.Text = "Compaction";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -406,7 +416,7 @@
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 32);
-            this.btnClear.TabIndex = 9;
+            this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Clear Queue";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.clearQueue);
@@ -434,6 +444,7 @@
             this.textBox10.ShortcutsEnabled = false;
             this.textBox10.Size = new System.Drawing.Size(267, 21);
             this.textBox10.TabIndex = 7;
+            this.textBox10.TabStop = false;
             this.textBox10.Text = "Queue";
             this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -451,6 +462,7 @@
             this.tboxHeaderSimulation.ShortcutsEnabled = false;
             this.tboxHeaderSimulation.Size = new System.Drawing.Size(265, 21);
             this.tboxHeaderSimulation.TabIndex = 10;
+            this.tboxHeaderSimulation.TabStop = false;
             this.tboxHeaderSimulation.Text = "Simulation";
             this.tboxHeaderSimulation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
