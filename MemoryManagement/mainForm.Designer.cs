@@ -113,6 +113,7 @@
             this.tboxOSMemory.Name = "tboxOSMemory";
             this.tboxOSMemory.Size = new System.Drawing.Size(217, 23);
             this.tboxOSMemory.TabIndex = 0;
+            
             // 
             // textBox7
             // 

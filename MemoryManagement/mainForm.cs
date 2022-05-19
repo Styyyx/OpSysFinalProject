@@ -25,6 +25,9 @@ namespace MemoryManagement
         {
             InitializeComponent();
             tboxOSMemory.Focus();
+            tboxOSMemory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxOnKeyPress);
+            tboxTotalMemory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxOnKeyPress);
+            tboxSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxOnKeyPress);
         }
 
         #region Queue System
@@ -211,6 +214,12 @@ namespace MemoryManagement
             return (backColor, foreColor);
         }
 
+        private void tboxOnKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)) { e.Handled = false; }
+            else { e.Handled = true; }
+        }
+
         #region Simulation System
 
         private void AddFreeMemory(int top, int height, int memorySize, int jobMemoryStart)
@@ -242,7 +251,7 @@ namespace MemoryManagement
                 if (item.jobName == "Free Memory")
                 {
                     // Check if last to avoid going out of index
-                    if (item != CopySimList.Last())
+                    if (item != SimList.Last())
                     {
                         // Check if next item is free memory
                         SimItem nextItem = CopySimList[CopySimList.IndexOf(item) + 1];
@@ -325,7 +334,7 @@ namespace MemoryManagement
         {
             // Find the smallest free memory
             SimItem bestMemoryFit = null;
-            foreach (SimItem item in SimList)
+            foreach (SimItem item in SimList.ToList())
             {
                 if (item.jobName == "Free Memory" && item.jobSize >= qItem.JobSize)
                 {
@@ -337,6 +346,7 @@ namespace MemoryManagement
                         if (!bestFit)
                         {
                             SliceFreeMemory(qItem, bestMemoryFit);
+                            return;
                         }
                     }
                     else
@@ -386,7 +396,32 @@ namespace MemoryManagement
 
         private void simCompac()
         {
+            // Shallow copy
+            foreach (SimItem item in SimList.ToList())
+            {
+                // OS will always be on top, no need to 
+                if (item.jobName != "Free Memory" && SimList.Last() != item && item.jobName != "OS")
+                {
+                    SimItem lastItem = SimList[SimList.IndexOf(item) - 1];
+                    if (lastItem.jobName == "Free Memory")
+                    {
+                        //Swap current item and next item in SimList
+                        SimItem tempItem = SimList[SimList.IndexOf(item)];
+                        SimList[SimList.IndexOf(item)] = SimList[SimList.IndexOf(lastItem)];
 
+                        int tempTop = item.Top + item.Height, tempMemoryStart = item.jobMemoryStart + item.jobSize;
+
+                        tempItem.Top = lastItem.Top;
+                        tempItem.jobMemoryStart = lastItem.jobMemoryStart;
+
+                        lastItem.Top = item.Top + item.Height;
+                        lastItem.jobMemoryStart = tempMemoryStart;
+
+                        SimList[SimList.IndexOf(lastItem)] = tempItem;
+                    }
+                }
+                CompacFreeMemory();
+            }
         }
 
         #endregion
